@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 
 // route imports
 const userRoutes = require('./routes/userRoutes');
+const courseRoutes = require('./routes/courseRoutes');
+
 
 const { PORT } = process.env 
 const { WELCOME_MESSAGE, DATABASE_URL } = process.env
@@ -23,6 +25,7 @@ app.use(bodyParser.urlencoded({extended: true }))
 
 // load routes to app
 app.use('/auth', userRoutes)
+app.use('/', courseRoutes)
 
 // spin up the server 
 mongoose.connect(DATABASE_URL).then(() => {

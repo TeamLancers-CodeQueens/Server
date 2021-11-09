@@ -3,8 +3,8 @@ const cors = require('cors');
 const User = require('../controllers/user.controller')
 
 router.post('/signup', cors(), async(req, res) => {
-    const {email, password} = req.body
-    let user = await User.registerUser({email, password})
+    const {name,email, password,username,dob,phone,counrty,gender} = req.body
+    let user = await User.registerUser({name,email, password,username,dob,phone,counrty,gender})
     return user ? 
        res.status(201).json({
            email: user.email,
