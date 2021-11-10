@@ -2,6 +2,7 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {SECRET_KEY} = process.env
+const Course = require('../models/Course');
 
 
 const registerUser = async (data) => {
@@ -26,8 +27,16 @@ const loginUser = async (data) => {
     return token;
     
 }
+const enroll = async (data)=>{
+    let enrollStudent =  await Course.findOneAndUpdate({"_id": data.courseId}, { $push: { studentList: data.studentId } })
+     let enrollCourse =  await User.findOneAndUpdate({"_id": data.studentId}, { $push: { courseList: data.courseId } })
+    if(enrollCourse && enrollStudent){
+        return enrollCourse
+    }
+}
 
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    enroll
 }

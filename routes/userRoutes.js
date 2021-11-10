@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const cors = require('cors');
 const User = require('../controllers/user.controller')
+const Course = require('../controllers/course.controller')
 
 router.post('/signup', cors(), async(req, res) => {
     const {name,email, password,username,dob,phone,counrty,gender} = req.body
@@ -27,5 +28,20 @@ router.post('/login', cors(), async(req, res) => {
            message: "Invalid username/password"
        })
 });
+router.post('/enroll', cors(), async(req, res) => {
+    const {studentId, courseId} = req.body
+    let enroll =  await User.enroll({studentId, courseId})
+
+
+    return enroll ? res.json({
+
+        message: "Enrolled successfully"
+    }) :
+       res.status(400).json({
+           token: user,
+           message: "Failed to enroll"
+       })
+});
+
 
 module.exports = router;
