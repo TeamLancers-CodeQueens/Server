@@ -17,15 +17,17 @@ https://teamlancers.herokuapp.com/addcourse
 
 # 5.Enroll
 
-# 6.View Students enrolled
+# 6.Mycourses
 
-# 7.Course Details
+# 7.View Students enrolled
 
-# 8.upload Links
+# 8.Course Details
 
-# 9.Edit Course
+# 9.upload Links
 
-# 10.Edit Profile
+# 10.Edit Course
+
+# 11.Edit Profile
 
 
 
