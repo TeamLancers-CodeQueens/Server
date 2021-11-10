@@ -35,8 +35,18 @@ const enroll = async (data)=>{
     }
 }
 
+const getCourses= async (data) => {
+    let user = await User.find({"_id": data.studentId})
+    let courses = await user[0].courseList;
+    if (courses)
+     return courses;
+    else
+     return null
+}
+
 module.exports = {
     registerUser,
     loginUser,
-    enroll
+    enroll,
+    getCourses
 }

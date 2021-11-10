@@ -20,26 +20,23 @@ router.post('/login', cors(), async(req, res) => {
     const {email, password} = req.body
     let user =  await User.loginUser({email, password})
     return user ? res.json({
-        token: user,
         message: "Logged in successfully"
     }) :
        res.status(400).json({
-           token: user,
            message: "Invalid username/password"
        })
 });
-router.post('/enroll', cors(), async(req, res) => {
-    const {studentId, courseId} = req.body
-    let enroll =  await User.enroll({studentId, courseId})
+router.post('/mycourses', cors(), async(req, res) => {
+    const {studentId} = req.body
+    let enroll =  await User.getCourses({studentId})
 
 
     return enroll ? res.json({
 
-        message: "Enrolled successfully"
+        message: enroll
     }) :
        res.status(400).json({
-           token: user,
-           message: "Failed to enroll"
+           message: "You dont have any courses yet"
        })
 });
 

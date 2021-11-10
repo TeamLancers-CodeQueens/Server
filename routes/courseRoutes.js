@@ -43,6 +43,19 @@ router.get('/courses/:id', cors(), async(req, res) => {
    })
        
 });
+router.post('/students', cors(), async(req, res) => {
+    const {courseId} = req.body
+    let enrolled =  await Course.getStudents({courseId})
+
+
+    return enrolled ? res.json({
+
+        message: enrolled
+    }) :
+       res.status(400).json({
+           message: "No students yet"
+       })
+});
 
 
 module.exports = router;
