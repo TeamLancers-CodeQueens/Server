@@ -19,8 +19,10 @@ https://teamlancers.herokuapp.com/addcourse
 https://teamlancers.herokuapp.com/auth/enroll
 
 # 6.Mycourses
+https://teamlancers.herokuapp.com/auth/mycourses
 
 # 7.View Students enrolled
+https://teamlancers.herokuapp.com/students
 
 # 8.Course Details
 
