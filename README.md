@@ -16,6 +16,7 @@ https://teamlancers.herokuapp.com/courses
 https://teamlancers.herokuapp.com/addcourse
 
 # 5.Enroll
+https://teamlancers.herokuapp.com/auth/enroll
 
 # 6.Mycourses
 
