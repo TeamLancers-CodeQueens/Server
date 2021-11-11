@@ -19,12 +19,13 @@ const loginUser = async (data) => {
     let loggedIn = await bcrypt.compare(pwdString, user.password)
     let token;
     
+    
     if(loggedIn) {
         token  = await jwt.sign({email:user.email}, SECRET_KEY)
     } else {
         token = null
     }
-    return token;
+    return {token, user};
     
 }
 const enroll = async (data)=>{
@@ -40,6 +41,14 @@ const getCourses= async (data) => {
     let courses = await user[0].courseList;
     if (courses)
      return courses;
+    else
+     return null
+}
+
+const getProfile= async (data) => {
+    let user = await User.find({"_id": data.studentId})
+    if (user)
+     return user;
     else
      return null
 }
