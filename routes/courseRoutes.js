@@ -32,7 +32,7 @@ router.get('/courses', cors(), async(req, res) => {
 
 router.get('/courses/:id', cors(), async(req, res) => {
     const id = req.params.id;
-   Course.find({_id:id}).then(result => {
+   Courses.find({_id:id}).then(result => {
     res.status(200).json({
         course: result
     })

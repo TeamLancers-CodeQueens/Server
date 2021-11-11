@@ -41,9 +41,22 @@ router.post('/mycourses', cors(), async(req, res) => {
            message: "You dont have any courses yet"
        })
 });
-router.post('/profile', cors(), async(req, res) => {
-    const {studentId} = req.body
-    let enroll =  await User.getProfile({studentId})
+router.post('/editProfile', cors(), async(req, res) => {
+    const {userId,userName,phone,country,location} = req.body
+    let edit =  await User.editProfile({userId,userName,phone,country,location})
+
+
+    return enroll ? res.json({
+
+        message: enroll
+    }) :
+       res.status(400).json({
+           message: "No Profile"
+       })
+});
+router.post('/enroll', cors(), async(req, res) => {
+    const {courseId,userId} = req.body
+    let edit =  await User.enroll({courseId,userId})
 
 
     return enroll ? res.json({
