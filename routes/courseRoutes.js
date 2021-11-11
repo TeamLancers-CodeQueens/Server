@@ -1,11 +1,11 @@
 const router = require('express').Router()
 const cors = require('cors');
-// const Course = require('../models/Course')
+ const Courses = require('../models/Course')
 const Course = require('../controllers/course.controller')
 
 router.post('/addcourse', cors(), async(req, res) => {
-    const {courseName, courseDescription,instructorName,instructorId,courseOutline} = req.body
-    let course =  await Course.createCourse({courseName, courseDescription,instructorName,instructorId,courseOutline})
+    const {courseName,email,instructorName,instructorId,courseDescription,courseOutline,courseMaterial,coursereferences,contact} = req.body
+    let course =  await Course.createCourse({courseName,email,instructorName,instructorId,courseDescription,courseOutline,courseMaterial,coursereferences,contact})
     return course ? res.json({
          message: "Course Created"
     }) :
@@ -16,7 +16,7 @@ router.post('/addcourse', cors(), async(req, res) => {
 });
 
 router.get('/courses', cors(), async(req, res) => {
-   Course.find().then(result => {
+   Courses.find().then(result => {
     res.status(200).json({
         courses: result
     })

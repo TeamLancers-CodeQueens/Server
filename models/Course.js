@@ -3,7 +3,7 @@ const User = require('../models/User');
 
 const courseSchema = new mongoose.Schema({
     courseName: String,
-    courseDescription: String,
+    email: String,
     instructorName: String,
     instructorId:{
         type:mongoose.Schema.ObjectId,
@@ -12,7 +12,11 @@ const courseSchema = new mongoose.Schema({
         index: true,
 
     },
+    courseDescription: String,
+   courseMaterial: String,
     courseOutline:Object,
+    coursereferences:String,
+    contact:String,
     createdAt: {
         type: Date,
         default: Date.now
