@@ -15,9 +15,13 @@ const { WELCOME_MESSAGE, DATABASE_URL } = process.env
 
 // declare app isntance
 const app = express();
-
+const corsOptions ={
+    origin:'*', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200,
+ }
 // load middleware
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true }))
 
